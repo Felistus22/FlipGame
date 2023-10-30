@@ -33,17 +33,17 @@ function Click({letter}) {
     }
 
   return (
-    <div className='w-44 h-48 '>
+    <div className='w-44 h-44 flex flex-col justify-center items-center'>
         <button className={style} onClick={handleLetterClick}>{letter}</button>
-        <span className={`${isClicked === false ? 'hidden' : 'bg-black '} border`}>
+        <span className={`${isClicked === false ? 'hidden' : 'bg-black '} border text-xl`}>
             {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <div className='flex flex-col'><button key={index}> {text} </button></div>
+                    <div className='flex flex-col items-center justify-center w-40 h-[60px]'><button key={index}> {text} </button></div>
                 ))                
             ): (
                 //if displayText is not an array
-                displayText
+                <div className=' flex items-center justify-center w-40 h-44'>{displayText}</div>
             )}
             
         </span>
