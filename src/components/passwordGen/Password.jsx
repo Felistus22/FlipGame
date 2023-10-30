@@ -26,13 +26,13 @@ function Password() {
     }
 
   return (
-    <div className='m-0 p-2 text-xl items-center bg-orange-500 w-[50%]'>
+    <div className='m-0 p-2 text-xl flex justify-center flex-col items-center bg-teal-900 text-gray-100 leading-10'>
       <h2> Password Generator</h2>
-      <div className='bg-orange-500'>
+      <div className=''>
         <input type="text" placeholder="password" id="passwordBox" readOnly value={newPassword} />
         
       </div>
-      <div className='bg-orange-500'>
+      <div className='border mt-2 bg-slate-100 text-teal-900 rounded-md'>
         <button onClick={handleGenerator}>Generate Password</button>
       </div>
     </div>
