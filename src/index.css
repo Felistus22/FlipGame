@@ -2,3 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    color: #918520;
+}
+
+@layer utilities{
+    .scale{
+        transform: scale(-1, 1);
+        background-color: #918520;
+        -moz-transform: scale(-1, 1);
+        -webkit-transform: scale(-1, 1);
+        -o-transform: scale(-1, 1);
+        -ms-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+    }
+    .bg-color{
+        background-color: #918520;
+    }
+    .rotate{
+        transform: rotateY(0deg);
+    }
+    .rotate1{
+        transform: rotateY(180deg);
+    }
+}

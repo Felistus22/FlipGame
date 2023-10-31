@@ -17,7 +17,7 @@ function Flip() {
       </div>
       <div className='flipcontainer p-2 bg-black h-[420px]'>
         <div className='flex flex-col justify-center items-center'>
-            <span className='m-1 p-2 text-5xl bg-emerald-800'> <Click letter='L'/> </span>
+            <span className='m-1 p-2 text-5xl w-48 h-48 flex flex-col justify-center items-center scale'> L </span>
         </div>
         <div className='flex flex-col justify-center items-center'>
             <span className='m-1 p-2 text-5xl bg-emerald-800'> <Click letter='P'/> </span>
