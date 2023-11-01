@@ -25,4 +25,9 @@
     .rotate1{
         transform: rotateY(180deg);
     }
+    .content-container{
+        position: absolute;
+        margin-left: -97px;
+        margin-top: -97px;
+    }
 }

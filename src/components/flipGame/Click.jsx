@@ -4,17 +4,20 @@ function Click({letter}) {
     const [ isClicked, setIsClicked ] = useState(false);
     const [ style, setStyle ]  = useState('block');
     const [ displayText, setDisplayText ]= useState('');
+    const [ contentVisible, setContentVisible ] = useState(false);
 
     const handleLetterClick = () => {
-        if (!isClicked) {
+        setIsClicked(!isClicked);
+        if (!contentVisible) {
             //alert(`${letter} clicked`);
-            setIsClicked(!isClicked);
+            //if content is currently visible, hide it
+            setContentVisible(true);
             setStyle('hidden');
 
             //setting the appropriate text based on the letter(F,L,I,P)
             switch (letter) {
                 case 'F' :
-                    setDisplayText('Hello F');
+                    setDisplayText('Hello F stats');
                     break;
                 case 'I' :
                     setDisplayText([
@@ -29,6 +32,10 @@ function Click({letter}) {
                 setDisplayText('L');
                 break;
             }
+        }else {
+            //if content is visible, show it
+            setContentVisible(false);
+            setStyle('block');
         }
     }
 
@@ -40,14 +47,14 @@ function Click({letter}) {
     let content = null;
     //render content based on letter
     if (letter === 'F'){
-        content = <div className='w-48 h-48 flex flex-col justify-center items-center'>{displayText}</div>
+        content = <button onClick={handleLetterClick} className='w-48 h-48 flex flex-col justify-center items-center'>{displayText}</button>
     }else if (letter === 'I'){
         content = (
-            <div className='border w-[400px] h-68'>
+            <button onClick={handleLetterClick} className=' bg-color w-[410px] content-container h-68'>
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <div className='flex flex-col justify-center ml-3 bg-color text-sm  w-[200px] h-24'><div
+                    <div className='flex flex-col justify-center ml-3 text-sm  w-[200px] h-24'><div
                     className='w-80 p-1 items-center'
                      key={index} dangerouslySetInnerHTML={createMarkup(text)} /></div>
                 ))                
@@ -55,30 +62,38 @@ function Click({letter}) {
                 //if displayText is not an array
                 null
             )}
-            </div>
+            </button>
         );
     } else if (letter === 'P') {
         content = (
-            <div className='rotate1'>
+            <button onClick={handleLetterClick} className=''>
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <div className='flex flex-col items-center justify-center w-48 h-[64px]'><button key={index}> {text} </button></div>
+                    <div className='flex flex-col items-center justify-center w-48 h-[64px]'><button onClick={HandleLevelSelect} key={index} dangerouslySetInnerHTML={createMarkup(text)} /></div>
                 ))                
             ): (
                 //if displayText is not an array
                 null
             )}
-            </div>
+            </button>
         )
+    }
+    const HandleLevelSelect = () => {
+        let y = true;
     }
 
   return (
     <div className='w-44 h-44 flex flex-col justify-center items-center'>
-        <button className={style} onClick={handleLetterClick}>{letter}</button>
-        <span className={`${isClicked === false ? 'hidden' : 'bg-color absolute'} text-xl rotate`}>
-            {content}
-            {/*{Array.isArray(displayText) ? (
+        <button className={style} onClick={handleLetterClick}>
+            {isClicked ? (contentVisible ? 'Hide Content' : 'Show content') : letter}
+        </button>
+        <span className={`${isClicked === false ? 'hidden' : 'bg-color absolute'} text-xl `}>
+            {isClicked && contentVisible && (
+                content
+            )}
+            {/*{content}
+            {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
                     <div className='flex flex-col items-center justify-center w-80 h-[60px]'><button key={index}> {text} </button></div>
