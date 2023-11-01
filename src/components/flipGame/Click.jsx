@@ -1,10 +1,19 @@
 import React, { useState } from 'react'
+//import ContentDisplay from './ContentDisplay';
+import Easy from '../levels/Easy'
+import Medium from '../levels/Medium'
+import Hard from '../levels/Hard'
 
 function Click({letter}) {
     const [ isClicked, setIsClicked ] = useState(false);
     const [ style, setStyle ]  = useState('block');
     const [ displayText, setDisplayText ]= useState('');
     const [ contentVisible, setContentVisible ] = useState(false);
+    const [ selectedComponent, setSelectedComponent ] = useState(null);
+
+    const HandleLevelSelect = (component) => {
+        setSelectedComponent(component);
+    }
 
     const handleLetterClick = () => {
         setIsClicked(!isClicked);
@@ -36,6 +45,7 @@ function Click({letter}) {
             //if content is visible, show it
             setContentVisible(false);
             setStyle('block');
+            setSelectedComponent(null);//we reset the selected component
         }
     }
 
@@ -79,10 +89,7 @@ function Click({letter}) {
             </button>
         )
     }
-    const HandleLevelSelect = () => {
-        let y = true;
-    }
-
+    
   return (
     <div className='w-44 h-44 flex flex-col justify-center items-center'>
         <button className={style} onClick={handleLetterClick}>
@@ -91,18 +98,10 @@ function Click({letter}) {
         <span className={`${isClicked === false ? 'hidden' : 'bg-color absolute'} text-xl `}>
             {isClicked && contentVisible && (
                 content
-            )}
-            {/*{content}
-            {Array.isArray(displayText) ? (
-                //if displayText is an array
-                displayText.map((text, index) => (
-                    <div className='flex flex-col items-center justify-center w-80 h-[60px]'><button key={index}> {text} </button></div>
-                ))                
-            ): (
-                //if displayText is not an array
-                <div className=' flex items-center justify-center w-40 h-44'>{displayText}</div>
-            )}*/}
-            
+            )}  
+            {selectedComponent === 'Easy' && <Easy />}
+            {selectedComponent === 'Medium' && <Medium />}
+            {selectedComponent === 'Hard' && <Hard />}
         </span>
     </div>
   )
