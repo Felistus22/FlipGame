@@ -13,6 +13,11 @@ function Click({letter}) {
 
     const HandleLevelSelect = (component) => {
         setSelectedComponent(component);
+        alert("hello ppyyyy");
+    }
+
+    const onEasyClick = () => {
+        alert("hello easyyyyyyyyyyy");
     }
 
     const handleLetterClick = () => {
@@ -76,11 +81,11 @@ function Click({letter}) {
         );
     } else if (letter === 'P') {
         content = (
-            <button onClick={handleLetterClick} className=''>
+            <button className='relative'>
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <div className='flex flex-col items-center justify-center w-48 h-[64px]'><button onClick={HandleLevelSelect} key={index} dangerouslySetInnerHTML={createMarkup(text)} /></div>
+                    <button className='flex flex-col items-center justify-center w-48 h-[64px]'><button onClick={HandleLevelSelect} key={index} className={index % 2 === 0 ? 'hover:bg-color1 w-full h-16' : 'hover:bg-color2 w-full h-16' } dangerouslySetInnerHTML={createMarkup(text)} /></button>
                 ))                
             ): (
                 //if displayText is not an array
@@ -92,17 +97,20 @@ function Click({letter}) {
     
   return (
     <div className='w-44 h-44 flex flex-col justify-center items-center'>
-        <button className={style} onClick={handleLetterClick}>
+        <button className={`${style} w-full h-full`} onClick={handleLetterClick}>
             {isClicked ? (contentVisible ? 'Hide Content' : 'Show content') : letter}
         </button>
         <span className={`${isClicked === false ? 'hidden' : 'bg-color absolute'} text-xl `}>
             {isClicked && contentVisible && (
                 content
             )}  
-            {selectedComponent === 'Easy' && <Easy />}
-            {selectedComponent === 'Medium' && <Medium />}
-            {selectedComponent === 'Hard' && <Hard />}
+            
         </span>
+        <span>{selectedComponent === 'EASY' && <Easy
+                onEasyClick = {onEasyClick}
+             />}
+            {selectedComponent === 'Medium' && <Medium />}
+            {selectedComponent === 'Hard' && <Hard />}</span>
     </div>
   )
 }

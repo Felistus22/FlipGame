@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-    color: #918520;
+    --color1: #b8a929;
+    --color2: #b8b81f;
 }
 
 @layer utilities{
@@ -15,6 +16,12 @@
         -o-transform: scale(-1, 1);
         -ms-transform: scale(-1, 1);
         transform: scale(-1, 1);
+    }
+    .bg-color1{
+        background-color: var(--color1);
+    }
+    .bg-color2{
+        background-color: var(--color2);
     }
     .bg-color{
         background-color: #918520;
