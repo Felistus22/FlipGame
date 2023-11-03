@@ -5,7 +5,7 @@ function Easy(onEasyClick) {
     <div>
       easy peasy
       <div>
-        <div><button onClick={onEasyClick}>w</button></div>
+        <div><button>walsnliv jojgrf</button></div>
         <div><button>w</button></div>
         <div><button> </button></div>
         <div><button></button></div>

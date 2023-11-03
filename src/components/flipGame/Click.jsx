@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 //import ContentDisplay from './ContentDisplay';
-import Easy from '../levels/Easy'
+//import Easy from '../levels/Easy'
 import Medium from '../levels/Medium'
 import Hard from '../levels/Hard'
+import { Link } from 'react-router-dom'
 
 function Click({letter}) {
     const [ isClicked, setIsClicked ] = useState(false);
@@ -11,13 +12,9 @@ function Click({letter}) {
     const [ contentVisible, setContentVisible ] = useState(false);
     const [ selectedComponent, setSelectedComponent ] = useState(null);
 
-    const HandleLevelSelect = (component) => {
-        setSelectedComponent(component);
-        alert("hello ppyyyy");
-    }
-
-    const onEasyClick = () => {
-        alert("hello easyyyyyyyyyyy");
+    const HandleLevelSelect = (selectedLevel) => {
+        setSelectedComponent(selectedLevel);
+        //alert("hello ppyyyy");
     }
 
     const handleLetterClick = () => {
@@ -81,17 +78,17 @@ function Click({letter}) {
         );
     } else if (letter === 'P') {
         content = (
-            <button className='relative'>
+            <div className='relative w-36'>
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <button className='flex flex-col items-center justify-center w-48 h-[64px]'><button onClick={HandleLevelSelect} key={index} className={index % 2 === 0 ? 'hover:bg-color1 w-full h-16' : 'hover:bg-color2 w-full h-16' } dangerouslySetInnerHTML={createMarkup(text)} /></button>
+                    <div className='flex flex-col items-center justify-center w-48 h-[64px]'><button onClick={()=>HandleLevelSelect(text)} >{text}</button></div>
                 ))                
             ): (
                 //if displayText is not an array
                 null
             )}
-            </button>
+            </div>
         )
     }
     
@@ -106,9 +103,7 @@ function Click({letter}) {
             )}  
             
         </span>
-        <span>{selectedComponent === 'EASY' && <Easy
-                onEasyClick = {onEasyClick}
-             />}
+        <span>{selectedComponent === 'EASY' && <Link to='/easylevel'>easy</Link>}
             {selectedComponent === 'Medium' && <Medium />}
             {selectedComponent === 'Hard' && <Hard />}</span>
     </div>
