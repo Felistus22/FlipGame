@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 //import ContentDisplay from './ContentDisplay';
-//import Easy from '../levels/Easy'
+import Easy from '../levels/Easy'
 import Medium from '../levels/Medium'
 import Hard from '../levels/Hard'
-import { Link } from 'react-router-dom'
 
 function Click({letter}) {
     const [ isClicked, setIsClicked ] = useState(false);
@@ -78,7 +77,7 @@ function Click({letter}) {
         );
     } else if (letter === 'P') {
         content = (
-            <div className='relative w-36'>
+            <div className='relative'>
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
@@ -103,7 +102,7 @@ function Click({letter}) {
             )}  
             
         </span>
-        <span>{selectedComponent === 'EASY' && <Link to='/easylevel'>easy</Link>}
+        <span>{selectedComponent === 'EASY' && <Easy />}
             {selectedComponent === 'Medium' && <Medium />}
             {selectedComponent === 'Hard' && <Hard />}</span>
     </div>
