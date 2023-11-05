@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-//import ContentDisplay from './ContentDisplay';
+import ContentDisplay from './ContentDisplay';
 import Easy from '../levels/Easy'
 import Medium from '../levels/Medium'
 import Hard from '../levels/Hard'
@@ -102,7 +102,7 @@ function Click({letter}) {
             )}  
             
         </span>
-        <span>{selectedComponent === 'EASY' && <Easy />}
+        <span>{selectedComponent === 'EASY' && <ContentDisplay />}
             {selectedComponent === 'Medium' && <Medium />}
             {selectedComponent === 'Hard' && <Hard />}</span>
     </div>

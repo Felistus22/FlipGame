@@ -1,5 +1,6 @@
 import React from 'react'
 import Click from './Click';
+//import Loader from '../Loader';
 
 function Flip() {
 
@@ -21,6 +22,7 @@ function Flip() {
             <Click letter='P'/>
         </div>
       </div>
+      
     </div>
   )
 }
