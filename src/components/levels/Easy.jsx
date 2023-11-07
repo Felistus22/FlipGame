@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { IconList } from './IconList'
-import Flip from '../flipGame/Flip'
+//import Flip from '../flipGame/Flip'
 //import Loader from '../Loader';
 
 function Easy({ onSelectComponent }) {
@@ -10,7 +10,7 @@ function Easy({ onSelectComponent }) {
   const [ flipped, setFlipped ] = useState([]);
   const [ matched, setMatched ] = useState([]);
   const [ isChecking, setIsChecking ] = useState(false);
-  const [ count, setCount ] = useState(3);
+  const [ count, setCount ] = useState(55);
 
   //shuffle the cards to initialize the game
   useEffect(()=>{
@@ -57,9 +57,9 @@ function Easy({ onSelectComponent }) {
     }
   };
 
-  const handleComponentSelect = (component) => {
-    onSelectComponent(component);
-  }
+  //const handleComponentSelect = (component) => {
+   // onSelectComponent(component);
+  //}
   const isCardFlipped = (index) => flipped.includes(index);
   const isCardMatched = (index) => matched.includes(index);
 
@@ -81,16 +81,14 @@ function Easy({ onSelectComponent }) {
       {count === 0 && matched.length !== 16 && (
           <div className='flex gap-3 text-3xl'>
             <p>Time's up!</p>
-            <button onClick={() => handleComponentSelect(<Flip />)}>componentselect</button>
-            <Link className='border bg-emerald-800 hover:opacity-40 p-1 rounded-lg' to='/flip'>Play again</Link>
+            <button onClick={() => onSelectComponent()} className='border bg-emerald-800 hover:opacity-40 p-1 rounded-lg'>Play Again</button>
           </div>
         )}
         {/*check whether all icons are matched for a won game*/}
         {matched.length === 16 && (
           <div className='flex flex-col justify-center items-center text-3xl absolute bg-emerald-800 z-10 w-56 h-36'>
             <span>You Won!</span><br />
-            <button onClick={() => handleComponentSelect(<Flip />)}>componentselect</button>
-            <Link to='/flip'>Play Again</Link>
+            <button onClick={() => onSelectComponent()} className='border bg-emerald-700 hover:opacity-40 p-1 rounded-lg'>Play Again</button>
           </div>
         )}
         <div className='grid grid-cols-4 p-2'>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import ContentDisplay from './ContentDisplay';
-import Easy from '../levels/Easy'
-import Medium from '../levels/Medium'
+import EasyLevelDisplay from '../levels/EasyLevelDisplay';
+//import Easy from '../levels/Easy'
+import MediumLevelDisplay from '../levels/MediumLevelDisplay'
 import Hard from '../levels/Hard'
 
 function Click({letter}) {
@@ -39,8 +39,8 @@ function Click({letter}) {
                     setDisplayText(['EASY', 'MEDIUM', 'HARD']);
                 break;
                 default :
-                setDisplayText('L');
-                break;
+                    setDisplayText('L');
+                    break;
             }
         }else {
             //if content is visible, show it
@@ -61,11 +61,11 @@ function Click({letter}) {
         content = <button onClick={handleLetterClick} className='w-48 h-48 flex flex-col justify-center items-center'>{displayText}</button>
     }else if (letter === 'I'){
         content = (
-            <button onClick={handleLetterClick} className=' bg-color w-[410px] content-container h-68'>
+            <button onClick={handleLetterClick} className='bg-color w-[410px] content-container border h-68 z-10'>
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <div className='flex flex-col justify-center ml-3 text-sm  w-[200px] h-24'><div
+                    <div className='flex flex-col justify-center ml-3 text-sm w-[200px] h-24'><div
                     className='w-80 p-1 items-center'
                      key={index} dangerouslySetInnerHTML={createMarkup(text)} /></div>
                 ))                
@@ -81,7 +81,7 @@ function Click({letter}) {
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <div className='flex flex-col items-center justify-center w-48 h-[64px]'><button onClick={()=>HandleLevelSelect(text)} >{text}</button></div>
+                    <div className='flex flex-col items-center justify-center h-[64px]'><button className='w-48' onClick={()=>HandleLevelSelect(text)} >{text}</button></div>
                 ))                
             ): (
                 //if displayText is not an array
@@ -102,9 +102,9 @@ function Click({letter}) {
             )}  
             
         </span>
-        <span>{selectedComponent === 'EASY' && <ContentDisplay />}
-            {selectedComponent === 'Medium' && <Medium />}
-            {selectedComponent === 'Hard' && <Hard />}</span>
+        <span>{selectedComponent === 'EASY' && <EasyLevelDisplay />}
+            {selectedComponent === 'MEDUIM' && <MediumLevelDisplay />}
+            {selectedComponent === 'HARD' && <Hard />}</span>
     </div>
   )
 }

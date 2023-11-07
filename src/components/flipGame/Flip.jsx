@@ -5,7 +5,9 @@ import Click from './Click';
 function Flip() {
 
   return (
-    <div className='flipgame flex flex-row justify-center text-white items-center p-2 m-1 leading-10'>
+    <div className='flipgame '>
+      <span className='flex justify-center'>click on the letter(s) to flip what is underneath</span>
+      <div className='flex flex-row justify-center text-white items-center p-2 m-1 leading-10'>
       <div className='flipContainer p-2 bg-black h-[420px]'>
         <div className='flex flex-col justify-center items-center m-1 mb-2 p-2 text-5xl bg-emerald-800'>
             <Click letter='F'/>            
@@ -22,7 +24,7 @@ function Flip() {
             <Click letter='P'/>
         </div>
       </div>
-      
+      </div> 
     </div>
   )
 }
