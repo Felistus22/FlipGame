@@ -7,11 +7,11 @@ function Medium({ onSelectComponent }) {
   const [ flipped, setFlipped ] = useState([]);
   const [ matched, setMatched ] = useState([]);
   const [ isChecking, setIsChecking ] = useState(false);
-  const [ count, setCount ] = useState(55);
+  const [ count, setCount ] = useState(5);
 
   //shuffle the cards to initialize the game
   useEffect(()=>{
-    const shuffleCards = shuffle([...IconList[0].Icons, ...IconList[0].Icons]);
+    const shuffleCards = shuffle([...IconList[0].Icons, ...IconList[0].Icons, ...IconList[0].Icons, ...IconList[0].Icons]);
     setCards(shuffleCards);
   }, []);
 
@@ -71,7 +71,7 @@ function Medium({ onSelectComponent }) {
 
   return (
     <div className='absolute bg-gray-800 w-full h-full top-0 left-0'>
-      <p className='text-2xl flex justify-center'>easy peasy, lets get started!!</p>
+      <p className='text-2xl flex justify-center'>medium level, lets get started!!</p>
       <div className='flex flex-col justify-center items-center m-2 border '>
 
         {/*check whether countdown is over to display a fail game*/}

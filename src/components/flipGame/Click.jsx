@@ -11,8 +11,8 @@ function Click({letter}) {
     const [ contentVisible, setContentVisible ] = useState(false);
     const [ selectedComponent, setSelectedComponent ] = useState(null);
 
-    const HandleLevelSelect = (selectedLevel) => {
-        setSelectedComponent(selectedLevel);
+    const HandleLevelSelect = (text) => {
+        setSelectedComponent(text);
         //alert("hello ppyyyy");
     }
 
@@ -81,7 +81,7 @@ function Click({letter}) {
                 {Array.isArray(displayText) ? (
                 //if displayText is an array
                 displayText.map((text, index) => (
-                    <div className='flex flex-col items-center justify-center h-[64px]'><button className='w-48' onClick={()=>HandleLevelSelect(text)} >{text}</button></div>
+                    <div className='flex flex-col items-center justify-center h-[64px]'><button key={index} className='w-48' onClick={()=>HandleLevelSelect(text)} >{text}</button></div>
                 ))                
             ): (
                 //if displayText is not an array
@@ -102,9 +102,9 @@ function Click({letter}) {
             )}  
             
         </span>
-        <span>{selectedComponent === 'EASY' && <EasyLevelDisplay />}
-            {selectedComponent === 'MEDUIM' && <MediumLevelDisplay />}
-            {selectedComponent === 'HARD' && <Hard />}</span>
+        <div>{selectedComponent === 'EASY' && (<EasyLevelDisplay />)}
+            {selectedComponent === 'MEDIUM' && (<MediumLevelDisplay />)}
+            {selectedComponent === 'HARD' && <Hard />}</div>
     </div>
   )
 }
